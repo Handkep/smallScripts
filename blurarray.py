@@ -8,8 +8,9 @@ for i in range(100):
 # array = [[255,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,255,255],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,255,0]]
 # blurredarray=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
 # mask = [1,1,2,2,4,8,4,2,2,1,1]
-mask = [1,2,3,4,5,5,9,5,5,4,3,2,1]
+# mask = [1,2,3,4,5,5,9,5,5,4,3,2,1]
 # mask = [1,3,6,9,6,3,1]
+mask = [1,2,4,2,1]
 # blurredarray=[]
 
 def printrgb(r,g,b,obj):
@@ -19,6 +20,8 @@ def printrgb(r,g,b,obj):
 for i in array:
     printrgb(i[0],i[1],i[2],"X")
 print()
+
+
 def _blurarr(arr,msk,out):
     for colorIndex in range(len(arr[0])):
         # print(colorIndex)
@@ -65,9 +68,21 @@ def _avgarr(arrsize,masksize,i):
 #     _avgarr(18,5,i[0])
 for j in range(50):
     print(j)
-    array[j] = [255,255,0]
+    array[j] = [255,0,0]
+    blurredarray=[[]]
+    for i in range(100):
+        blurredarray.append([]) 
     _blurarr(array,mask,blurredarray)
+    array = blurredarray
+    blurredarray=[[]]
+    for i in range(100):
+        blurredarray.append([]) 
+    _blurarr(array,mask,blurredarray)
+    for i in blurredarray:
+        printrgb(i[0],i[1],i[2],"X")
+    print()
     for i in array:
         printrgb(i[0],i[1],i[2],"X")
     print()
     array[j] = [0,0,0]
+printrgb(70,0,0,"ASDF")
